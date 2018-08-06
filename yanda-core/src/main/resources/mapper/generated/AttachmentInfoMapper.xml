@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yanda.core.mapper.generated.AttachmentInfoMapper">
+  <resultMap id="BasePropertyResultMap" type="com.yanda.core.entity.generated.AttachmentInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="appendix_id" jdbcType="BIGINT" property="appendixId" />
+    <result column="old_filename" jdbcType="VARCHAR" property="oldFilename" />
+    <result column="new_filename" jdbcType="VARCHAR" property="newFilename" />
+    <result column="file_ext" jdbcType="VARCHAR" property="fileExt" />
+    <result column="file_path" jdbcType="VARCHAR" property="filePath" />
+    <result column="file_type" jdbcType="INTEGER" property="fileType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="duration" jdbcType="BIGINT" property="duration" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.yanda.core.entity.generated.AttachmentInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <constructor>
+      <idArg column="appendix_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="old_filename" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="new_filename" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="file_ext" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="file_path" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="file_type" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="duration" javaType="java.lang.Long" jdbcType="BIGINT" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    appendix_id, old_filename, new_filename, file_ext, file_path, file_type, create_time, 
+    duration
+  </sql>
+  <select id="selectByExample" parameterType="com.yanda.core.entity.generated.AttachmentInfoExample" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_attachment_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExampleSelective" parameterType="map" resultMap="BasePropertyResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select
+    <if test="example.distinct">
+      distinct
+    </if>
+    <foreach collection="selective" item="column" separator=",">
+      ${column.value}
+    </foreach>
+    from t_attachment_info
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+    <if test="example.orderByClause != null">
+      order by ${example.orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.yanda.core.entity.generated.AttachmentInfoExample">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    delete from t_attachment_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <select id="countByExample" parameterType="com.yanda.core.entity.generated.AttachmentInfoExample" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select count(*) from t_attachment_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update t_attachment_info
+    <set>
+      <if test="record.appendixId != null">
+        appendix_id = #{record.appendixId,jdbcType=BIGINT},
+      </if>
+      <if test="record.oldFilename != null">
+        old_filename = #{record.oldFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newFilename != null">
+        new_filename = #{record.newFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileExt != null">
+        file_ext = #{record.fileExt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filePath != null">
+        file_path = #{record.filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileType != null">
+        file_type = #{record.fileType,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.duration != null">
+        duration = #{record.duration,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update t_attachment_info
+    set appendix_id = #{record.appendixId,jdbcType=BIGINT},
+      old_filename = #{record.oldFilename,jdbcType=VARCHAR},
+      new_filename = #{record.newFilename,jdbcType=VARCHAR},
+      file_ext = #{record.fileExt,jdbcType=VARCHAR},
+      file_path = #{record.filePath,jdbcType=VARCHAR},
+      file_type = #{record.fileType,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      duration = #{record.duration,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="BasePropertyResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select
+    <foreach collection="selective" item="column" separator=",">
+      ${column.value}
+    </foreach>
+    from t_attachment_info
+    where appendix_id = #{appendixId,jdbcType=BIGINT}
+  </select>
+  <insert id="upsert" keyColumn="appendix_id" keyProperty="appendixId" parameterType="com.yanda.core.entity.generated.AttachmentInfo" useGeneratedKeys="true">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    insert into t_attachment_info
+    (appendix_id, old_filename, new_filename, file_ext, file_path, file_type, create_time, 
+      duration)
+    values
+    (#{appendixId,jdbcType=BIGINT}, #{oldFilename,jdbcType=VARCHAR}, #{newFilename,jdbcType=VARCHAR}, 
+      #{fileExt,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, #{fileType,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{duration,jdbcType=BIGINT})
+    on duplicate key update 
+    appendix_id = #{appendixId,jdbcType=BIGINT}, 
+    old_filename = #{oldFilename,jdbcType=VARCHAR}, 
+    new_filename = #{newFilename,jdbcType=VARCHAR}, 
+    file_ext = #{fileExt,jdbcType=VARCHAR}, 
+    file_path = #{filePath,jdbcType=VARCHAR}, 
+    file_type = #{fileType,jdbcType=INTEGER}, 
+    create_time = #{createTime,jdbcType=TIMESTAMP}, 
+    duration = #{duration,jdbcType=BIGINT}
+  </insert>
+  <insert id="upsertSelective" keyColumn="appendix_id" keyProperty="appendixId" parameterType="com.yanda.core.entity.generated.AttachmentInfo" useGeneratedKeys="true">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    insert into t_attachment_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appendixId != null">
+        appendix_id,
+      </if>
+      <if test="oldFilename != null">
+        old_filename,
+      </if>
+      <if test="newFilename != null">
+        new_filename,
+      </if>
+      <if test="fileExt != null">
+        file_ext,
+      </if>
+      <if test="filePath != null">
+        file_path,
+      </if>
+      <if test="fileType != null">
+        file_type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="duration != null">
+        duration,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appendixId != null">
+        #{appendixId,jdbcType=BIGINT},
+      </if>
+      <if test="oldFilename != null">
+        #{oldFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="newFilename != null">
+        #{newFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="fileExt != null">
+        #{fileExt,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null">
+        #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null">
+        #{fileType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="duration != null">
+        #{duration,jdbcType=BIGINT},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="appendixId != null">
+        appendix_id = #{appendixId,jdbcType=BIGINT},
+      </if>
+      <if test="oldFilename != null">
+        old_filename = #{oldFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="newFilename != null">
+        new_filename = #{newFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="fileExt != null">
+        file_ext = #{fileExt,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null">
+        file_path = #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null">
+        file_type = #{fileType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="duration != null">
+        duration = #{duration,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

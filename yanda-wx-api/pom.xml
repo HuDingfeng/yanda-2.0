@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.yanda</groupId>
+	<artifactId>yanda-wx-api</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>yanda-wx-api</name>
+	<description>小程序api模块</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.2.RELEASE</version>
+		<relativePath/> 
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<start-class>com.yanda.wx.WxApiApplication</start-class>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.yanda</groupId>
+			<artifactId>yanda-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<!-- 热部署模块 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+	</dependencies>
+
+	<build>
+	
+		<finalName>yanda</finalName>
+	
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<executable>true</executable>
+					<layout>ZIP</layout>
+					<excludeGroupIds>
+						org.springframework, org.springframework.boot, org.springframework.data, org.springframework.ws,
+						org.apache.tomcat.embed, org.apache.tomcat, org.apache.xmlbeans, org.apache.commons, org.apache.poi, org.apache.httpcomponents, org.apache.geronimo.bundles, org.apache.neethi, org.apache.ws.xmlschema,
+						org.mybatis.spring.boot, org.mybatis,
+						org.hibernate.common, org.hibernate.javax.persistence, org.hibernate,
+						org.webjars.bower,
+						org.eclipse.jdt.core.compiler,
+						org.codehaus.groovy,
+						org.hamcrest,
+						org.aspectj,
+						org.slf4j,
+						org.jboss, org.jboss.logging,
+						org.thymeleaf,
+						org.unbescape,
+						org.javassist,
+						org.scala-lang,
+						org.yaml,
+						org.apache.cxf,
+						org.ow2.asm,
+						org.codehaus.woodstox,
+						org.json,
+						commons-httpclient, commons-beanutils, commons-codec, commons-collections, commons-io, commons-lang, commons-logging,
+						mysql,
+						javax.servlet,
+						com.alibaba,
+						com.trs,
+						dom4j,
+						jaxen,
+						net.sf.json-lib, net.sf.ezmorph, net.sourceforge.jexcelapi, net.sourceforge.nekohtml,
+						com.jayway, com.sun.xml.bind,
+						com.fasterxml,
+						com.github.qcloudsms,
+						ch.qos.logback,
+						javax.validation,
+						javax.xml.bind,
+						nz.net.ultraq.thymeleaf,
+						antlr,
+						aopalliance,
+						aspectj,
+						com.fasterxml.jackson.core,
+						javax.transaction, javax.persistence,
+						junit,
+						log4j,
+						stax,
+						xml-apis, xml-resolver,
+						xerces,
+						ognl,
+						com.github.pagehelper,
+						com.github.jsqlparser,
+						com.belerweb,
+						com.vaadin.external.google,
+						wsdl4j,
+						redis.clients,
+						tk.mybatis,
+						it.sauronsoftware
+					</excludeGroupIds>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yanda.core.mapper.MovieAttachmentMapper">
+
+	<resultMap id="EpisodeDetailInfo" type="com.yanda.core.entity.EpisodeDetailInfo"
+		extends="com.yanda.core.mapper.generated.EpisodeInfoMapper.BasePropertyResultMap">
+		<association column="mv_appendix_id"
+			javaType="com.yanda.core.entity.generated.AttachmentInfo" property="mvAttach"
+			select="findAttachmentById" />
+	</resultMap>
+
+	<select id="findEpisodeDetailInfoById" resultMap="EpisodeDetailInfo">
+		select * from
+		t_mv_episode where episode_id = #{epsodeId}
+	</select>
+
+	<select id="findAttachmentById"
+		resultMap="com.yanda.core.mapper.generated.AttachmentInfoMapper.BaseResultMap">
+		select * from t_attachment_info where appendix_id =
+		#{mv_appendix_id}
+	</select>
+
+</mapper>

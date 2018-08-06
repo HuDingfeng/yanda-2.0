@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!--导入属性配置 -->
+	<properties resource="mybatis/generator.properties"></properties>
+
+	<!--指定特定数据库的jdbc驱动jar包的位置 -->
+	<classPathEntry location="${jdbc.driverLocation}" />
+
+	<context id="default" targetRuntime="MyBatis3">
+	
+		<!-- 通用mapper插件 -->
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <!-- 此处的 MyMapper注意一定不能被扫描到 -->
+          	<property name="mappers" value="com.yanda.core.util.MyMapper"/>
+        </plugin> 
+		<!-- 实体序列化 -->
+         <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+         
+          <!-- 查询结果选择性返回插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.SelectSelectivePlugin" />
+        <!-- 数据Model属性对应Column获取插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.ModelColumnPlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.UpsertPlugin"/>
+
+	
+		<!-- optional，旨在创建class时，对注释进行控制 -->
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+
+
+		<!--jdbc的数据库连接 -->
+		<jdbcConnection driverClass="${jdbc.driverClass}"
+			connectionURL="${jdbc.connectionURL}" userId="${jdbc.userId}"
+			password="${jdbc.password}">
+		</jdbcConnection>
+
+
+		<!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制 -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- Model模型生成器,用来生成含有主键key的类，记录类 以及查询Example类 targetPackage 指定生成的model生成所在的包名 
+			targetProject 指定在该项目下所在的路径 -->
+		<javaModelGenerator targetPackage="com.yanda.core.entity.generated"
+			targetProject="src/main/java">
+			<!-- 是否对model添加 构造函数 -->
+			<property name="constructorBased" value="true" />
+
+			<!-- 是否允许子包，即targetPackage.schemaName.tableName -->
+			<property name="enableSubPackages" value="false" />
+
+			<!-- 建立的Model对象是否 不可改变 即生成的Model对象不会有 setter方法，只有构造方法 -->
+			<!--<property name="immutable" value="true"/> -->
+
+			<!-- 给Model添加一个父类 -->
+			<!--<property name="rootClass" value="java.io.Serializable"/> -->
+
+			<!-- 是否对类CHAR类型的列的数据进行trim操作 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!--Mapper映射文件生成所在的目录 为每一个数据库的表生成对应的SqlMap文件 (dao) -->
+		<sqlMapGenerator targetPackage="mapper/generated"
+			targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+
+		<javaClientGenerator targetPackage="com.yanda.core.mapper.generated"
+			targetProject="src/main/java" type="XMLMAPPER">
+			<property name="enableSubPackages" value="true" />
+			<!-- 定义Maper.java 源代码中的ByExample() 方法的可视性，可选的值有： public; private; protected; 
+				default 注意：如果 targetRuntime="MyBatis3",此参数被忽略 -->
+			<!--<property name="exampleMethodVisibility" value=""/> -->
+			<!-- 方法名计数器 Important note: this property is ignored if the target runtime 
+				is MyBatis3. -->
+			<!--<property name="methodNameCalculator" value=""/> -->
+
+			<!-- 为生成的接口添加父接口 -->
+			<!--<property name="rootInterface" value=""/> -->
+
+		</javaClientGenerator>
+		 
+		<table tableName="t_attachment_info" domainObjectName="AttachmentInfo">
+			<generatedKey column="appendix_id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<table tableName="t_banner_info" domainObjectName="BannerInfo" />
+		<table tableName="t_comment_info" domainObjectName="CommentInfo" />
+		<table tableName="t_mv_episode" domainObjectName="EpisodeInfo" />
+		<table tableName="t_mv_info" domainObjectName="MovieInfo" />
+		<table tableName="t_role_info" domainObjectName="RoleInfo" />
+		<table tableName="t_search_keywords" domainObjectName="KeywordInfo" />
+		<table tableName="t_user_agree" domainObjectName="UserAgreeInfo" />
+		<table tableName="t_user_info" domainObjectName="UserInfo" />
+		<table tableName="t_user_role" domainObjectName="UserRoleInfo" />
+		<table tableName="t_user_search" domainObjectName="UserSearchInfo" />
+		<table tableName="t_user_collect" domainObjectName="UserCollectInfo" />
+		<table tableName="t_vip_card_info" domainObjectName="VipCardInfo" />
+		
+		<table tableName="t_mv_episode" domainObjectName="EpisodeInfo" />
+		<table tableName="t_mv_info" domainObjectName="MovieInfo" />
+		
+		<table tableName="t_user_history" domainObjectName="UserHistoryInfo" />
+		<table tableName="t_log_info" domainObjectName="LogInfo" />
+		<table tableName="t_mv_episode" domainObjectName="EpisodeInfo" />
+		<table tableName="t_pay_info" domainObjectName="PayInfo" />
+		<table tableName="t_product_info" domainObjectName="ProductInfo" />
+		<table tableName="t_vip_card_info" domainObjectName="VipCardInfo" />
+		<table tableName="t_paper_info" domainObjectName="PaperInfo" />
+		<table tableName="t_classify_info" domainObjectName="ClassifyInfo" />
+		<table tableName="t_question_info" domainObjectName="QuestionInfo">
+			<columnOverride column="question_content" jdbcType="VARCHAR"></columnOverride>
+		</table>
+	</context>
+</generatorConfiguration>
