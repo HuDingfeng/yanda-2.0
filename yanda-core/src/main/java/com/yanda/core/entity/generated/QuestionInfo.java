@@ -108,34 +108,22 @@ public class QuestionInfo implements Serializable {
     private Date updateTime;
 
     /**
-     * 所属年级分类ID
+     * 一级分类
      */
-    @Column(name = "classify_nj")
-    private Integer classifyNj;
+    @Column(name = "classify_1")
+    private Integer classify1;
 
     /**
-     * 所属章节分类ID
+     * 二级分类
      */
-    @Column(name = "classify_z")
-    private Integer classifyZ;
+    @Column(name = "classify_2")
+    private Integer classify2;
 
     /**
-     * 所属小节分类ID
+     * 三级分类
      */
-    @Column(name = "classify_j")
-    private Integer classifyJ;
-
-    /**
-     * 所属单元分类ID
-     */
-    @Column(name = "classify_dy")
-    private Integer classifyDy;
-
-    /**
-     * 所属期中期末分类ID
-     */
-    @Column(name = "classify_q")
-    private Integer classifyQ;
+    @Column(name = "classify_3")
+    private Integer classify3;
 
     /**
      * 分类id路径
@@ -151,7 +139,7 @@ public class QuestionInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public QuestionInfo(Long questionId, String questionName, String questionContent, Integer questionType, String answer, Integer answerNum, String answerA, String answerB, String answerC, String answerD, Integer module, Long imgAppendixId, Long mvAppendixId, Long episodeId, Integer vipType, Date createTime, Date updateTime, Integer classifyNj, Integer classifyZ, Integer classifyJ, Integer classifyDy, Integer classifyQ, String classifyId, String classifyName) {
+    public QuestionInfo(Long questionId, String questionName, String questionContent, Integer questionType, String answer, Integer answerNum, String answerA, String answerB, String answerC, String answerD, Integer module, Long imgAppendixId, Long mvAppendixId, Long episodeId, Integer vipType, Date createTime, Date updateTime, Integer classify1, Integer classify2, Integer classify3, String classifyId, String classifyName) {
         this.questionId = questionId;
         this.questionName = questionName;
         this.questionContent = questionContent;
@@ -169,11 +157,9 @@ public class QuestionInfo implements Serializable {
         this.vipType = vipType;
         this.createTime = createTime;
         this.updateTime = updateTime;
-        this.classifyNj = classifyNj;
-        this.classifyZ = classifyZ;
-        this.classifyJ = classifyJ;
-        this.classifyDy = classifyDy;
-        this.classifyQ = classifyQ;
+        this.classify1 = classify1;
+        this.classify2 = classify2;
+        this.classify3 = classify3;
         this.classifyId = classifyId;
         this.classifyName = classifyName;
     }
@@ -489,93 +475,57 @@ public class QuestionInfo implements Serializable {
     }
 
     /**
-     * 获取所属年级分类ID
+     * 获取一级分类
      *
-     * @return classify_nj - 所属年级分类ID
+     * @return classify_1 - 一级分类
      */
-    public Integer getClassifyNj() {
-        return classifyNj;
+    public Integer getClassify1() {
+        return classify1;
     }
 
     /**
-     * 设置所属年级分类ID
+     * 设置一级分类
      *
-     * @param classifyNj 所属年级分类ID
+     * @param classify1 一级分类
      */
-    public void setClassifyNj(Integer classifyNj) {
-        this.classifyNj = classifyNj;
+    public void setClassify1(Integer classify1) {
+        this.classify1 = classify1;
     }
 
     /**
-     * 获取所属章节分类ID
+     * 获取二级分类
      *
-     * @return classify_z - 所属章节分类ID
+     * @return classify_2 - 二级分类
      */
-    public Integer getClassifyZ() {
-        return classifyZ;
+    public Integer getClassify2() {
+        return classify2;
     }
 
     /**
-     * 设置所属章节分类ID
+     * 设置二级分类
      *
-     * @param classifyZ 所属章节分类ID
+     * @param classify2 二级分类
      */
-    public void setClassifyZ(Integer classifyZ) {
-        this.classifyZ = classifyZ;
+    public void setClassify2(Integer classify2) {
+        this.classify2 = classify2;
     }
 
     /**
-     * 获取所属小节分类ID
+     * 获取三级分类
      *
-     * @return classify_j - 所属小节分类ID
+     * @return classify_3 - 三级分类
      */
-    public Integer getClassifyJ() {
-        return classifyJ;
+    public Integer getClassify3() {
+        return classify3;
     }
 
     /**
-     * 设置所属小节分类ID
+     * 设置三级分类
      *
-     * @param classifyJ 所属小节分类ID
+     * @param classify3 三级分类
      */
-    public void setClassifyJ(Integer classifyJ) {
-        this.classifyJ = classifyJ;
-    }
-
-    /**
-     * 获取所属单元分类ID
-     *
-     * @return classify_dy - 所属单元分类ID
-     */
-    public Integer getClassifyDy() {
-        return classifyDy;
-    }
-
-    /**
-     * 设置所属单元分类ID
-     *
-     * @param classifyDy 所属单元分类ID
-     */
-    public void setClassifyDy(Integer classifyDy) {
-        this.classifyDy = classifyDy;
-    }
-
-    /**
-     * 获取所属期中期末分类ID
-     *
-     * @return classify_q - 所属期中期末分类ID
-     */
-    public Integer getClassifyQ() {
-        return classifyQ;
-    }
-
-    /**
-     * 设置所属期中期末分类ID
-     *
-     * @param classifyQ 所属期中期末分类ID
-     */
-    public void setClassifyQ(Integer classifyQ) {
-        this.classifyQ = classifyQ;
+    public void setClassify3(Integer classify3) {
+        this.classify3 = classify3;
     }
 
     /**
@@ -632,11 +582,9 @@ public class QuestionInfo implements Serializable {
         vipType("vip_type"),
         createTime("create_time"),
         updateTime("update_time"),
-        classifyNj("classify_nj"),
-        classifyZ("classify_z"),
-        classifyJ("classify_j"),
-        classifyDy("classify_dy"),
-        classifyQ("classify_q"),
+        classify1("classify_1"),
+        classify2("classify_2"),
+        classify3("classify_3"),
         classifyId("classify_id"),
         classifyName("classify_name");
 

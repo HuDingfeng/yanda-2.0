@@ -15,7 +15,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.2.RELEASE</version>
-		<relativePath/> 
+		<relativePath />
 	</parent>
 
 	<properties>
@@ -42,19 +42,13 @@
 			<artifactId>yanda-core</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
-		<!-- 热部署模块 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
-        </dependency>
+
 	</dependencies>
 
 	<build>
-	
+
 		<finalName>yanda</finalName>
-	
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -64,7 +58,8 @@
 					<layout>ZIP</layout>
 					<excludeGroupIds>
 						org.springframework, org.springframework.boot, org.springframework.data, org.springframework.ws,
-						org.apache.tomcat.embed, org.apache.tomcat, org.apache.xmlbeans, org.apache.commons, org.apache.poi, org.apache.httpcomponents, org.apache.geronimo.bundles, org.apache.neethi, org.apache.ws.xmlschema,
+						org.apache.tomcat.embed, org.apache.tomcat, org.apache.xmlbeans, org.apache.commons, org.apache.poi,
+						org.apache.httpcomponents, org.apache.geronimo.bundles, org.apache.neethi, org.apache.ws.xmlschema,
 						org.mybatis.spring.boot, org.mybatis,
 						org.hibernate.common, org.hibernate.javax.persistence, org.hibernate,
 						org.webjars.bower,
@@ -73,7 +68,8 @@
 						org.hamcrest,
 						org.aspectj,
 						org.slf4j,
-						org.jboss, org.jboss.logging,
+						org.jboss,
+						org.jboss.logging,
 						org.thymeleaf,
 						org.unbescape,
 						org.javassist,
@@ -83,14 +79,16 @@
 						org.ow2.asm,
 						org.codehaus.woodstox,
 						org.json,
-						commons-httpclient, commons-beanutils, commons-codec, commons-collections, commons-io, commons-lang, commons-logging,
+						commons-httpclient, commons-beanutils, commons-codec, commons-collections,
+						commons-io, commons-lang, commons-logging,
 						mysql,
 						javax.servlet,
 						com.alibaba,
 						com.trs,
 						dom4j,
 						jaxen,
-						net.sf.json-lib, net.sf.ezmorph, net.sourceforge.jexcelapi, net.sourceforge.nekohtml,
+						net.sf.json-lib,
+						net.sf.ezmorph, net.sourceforge.jexcelapi, net.sourceforge.nekohtml,
 						com.jayway, com.sun.xml.bind,
 						com.fasterxml,
 						com.github.qcloudsms,

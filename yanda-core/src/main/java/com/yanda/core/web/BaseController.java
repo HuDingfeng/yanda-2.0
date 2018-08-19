@@ -86,6 +86,17 @@ public class BaseController {
 		return value;
 	}
 	
+	public Integer getIntValue(HttpServletRequest request, String name, Integer defaultVal) {
+		String value = request.getParameter(name);
+		if (StringUtil.isEmpty(value))
+			return defaultVal;
+		return Integer.valueOf(value);
+	}
+	
+	public Integer getIntValue(HttpServletRequest request, String name) {
+		return getIntValue(request, name, null);
+	}
+	
 	/**
 	 * 从请求体中获取指定参数值，若为null则返回空字符串
 	 * @param request 请求体

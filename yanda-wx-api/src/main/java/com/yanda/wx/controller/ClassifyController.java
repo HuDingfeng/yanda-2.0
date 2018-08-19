@@ -49,4 +49,15 @@ public class ClassifyController extends BaseController {
 		return classifyService.findChildListByParentId(parentId);
 	}
 	
+	/**
+	 * 根据年级ID获取该年级下的章节树分类
+	 * @param request
+	 * @param parentId
+	 * @return
+	 */
+	@GetMapping(value = "/getTreeByParentId")
+	public List<WebClassifyInfo> getTreeByParentId(HttpServletRequest request, Integer parentId, Integer type) {
+		return classifyService.getTreeByParentId(parentId, type);
+	}
+	
 }

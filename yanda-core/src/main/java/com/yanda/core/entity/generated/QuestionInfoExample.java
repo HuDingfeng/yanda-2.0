@@ -1195,303 +1195,183 @@ public class QuestionInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andClassifyNjIsNull() {
-            addCriterion("classify_nj is null");
+        public Criteria andClassify1IsNull() {
+            addCriterion("classify_1 is null");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyNjIsNotNull() {
-            addCriterion("classify_nj is not null");
+        public Criteria andClassify1IsNotNull() {
+            addCriterion("classify_1 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyNjEqualTo(Integer value) {
-            addCriterion("classify_nj =", value, "classifyNj");
+        public Criteria andClassify1EqualTo(Integer value) {
+            addCriterion("classify_1 =", value, "classify1");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyNjNotEqualTo(Integer value) {
-            addCriterion("classify_nj <>", value, "classifyNj");
+        public Criteria andClassify1NotEqualTo(Integer value) {
+            addCriterion("classify_1 <>", value, "classify1");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyNjGreaterThan(Integer value) {
-            addCriterion("classify_nj >", value, "classifyNj");
+        public Criteria andClassify1GreaterThan(Integer value) {
+            addCriterion("classify_1 >", value, "classify1");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyNjGreaterThanOrEqualTo(Integer value) {
-            addCriterion("classify_nj >=", value, "classifyNj");
+        public Criteria andClassify1GreaterThanOrEqualTo(Integer value) {
+            addCriterion("classify_1 >=", value, "classify1");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyNjLessThan(Integer value) {
-            addCriterion("classify_nj <", value, "classifyNj");
+        public Criteria andClassify1LessThan(Integer value) {
+            addCriterion("classify_1 <", value, "classify1");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyNjLessThanOrEqualTo(Integer value) {
-            addCriterion("classify_nj <=", value, "classifyNj");
+        public Criteria andClassify1LessThanOrEqualTo(Integer value) {
+            addCriterion("classify_1 <=", value, "classify1");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyNjIn(List<Integer> values) {
-            addCriterion("classify_nj in", values, "classifyNj");
+        public Criteria andClassify1In(List<Integer> values) {
+            addCriterion("classify_1 in", values, "classify1");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyNjNotIn(List<Integer> values) {
-            addCriterion("classify_nj not in", values, "classifyNj");
+        public Criteria andClassify1NotIn(List<Integer> values) {
+            addCriterion("classify_1 not in", values, "classify1");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyNjBetween(Integer value1, Integer value2) {
-            addCriterion("classify_nj between", value1, value2, "classifyNj");
+        public Criteria andClassify1Between(Integer value1, Integer value2) {
+            addCriterion("classify_1 between", value1, value2, "classify1");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyNjNotBetween(Integer value1, Integer value2) {
-            addCriterion("classify_nj not between", value1, value2, "classifyNj");
+        public Criteria andClassify1NotBetween(Integer value1, Integer value2) {
+            addCriterion("classify_1 not between", value1, value2, "classify1");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyZIsNull() {
-            addCriterion("classify_z is null");
+        public Criteria andClassify2IsNull() {
+            addCriterion("classify_2 is null");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyZIsNotNull() {
-            addCriterion("classify_z is not null");
+        public Criteria andClassify2IsNotNull() {
+            addCriterion("classify_2 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyZEqualTo(Integer value) {
-            addCriterion("classify_z =", value, "classifyZ");
+        public Criteria andClassify2EqualTo(Integer value) {
+            addCriterion("classify_2 =", value, "classify2");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyZNotEqualTo(Integer value) {
-            addCriterion("classify_z <>", value, "classifyZ");
+        public Criteria andClassify2NotEqualTo(Integer value) {
+            addCriterion("classify_2 <>", value, "classify2");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyZGreaterThan(Integer value) {
-            addCriterion("classify_z >", value, "classifyZ");
+        public Criteria andClassify2GreaterThan(Integer value) {
+            addCriterion("classify_2 >", value, "classify2");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyZGreaterThanOrEqualTo(Integer value) {
-            addCriterion("classify_z >=", value, "classifyZ");
+        public Criteria andClassify2GreaterThanOrEqualTo(Integer value) {
+            addCriterion("classify_2 >=", value, "classify2");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyZLessThan(Integer value) {
-            addCriterion("classify_z <", value, "classifyZ");
+        public Criteria andClassify2LessThan(Integer value) {
+            addCriterion("classify_2 <", value, "classify2");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyZLessThanOrEqualTo(Integer value) {
-            addCriterion("classify_z <=", value, "classifyZ");
+        public Criteria andClassify2LessThanOrEqualTo(Integer value) {
+            addCriterion("classify_2 <=", value, "classify2");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyZIn(List<Integer> values) {
-            addCriterion("classify_z in", values, "classifyZ");
+        public Criteria andClassify2In(List<Integer> values) {
+            addCriterion("classify_2 in", values, "classify2");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyZNotIn(List<Integer> values) {
-            addCriterion("classify_z not in", values, "classifyZ");
+        public Criteria andClassify2NotIn(List<Integer> values) {
+            addCriterion("classify_2 not in", values, "classify2");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyZBetween(Integer value1, Integer value2) {
-            addCriterion("classify_z between", value1, value2, "classifyZ");
+        public Criteria andClassify2Between(Integer value1, Integer value2) {
+            addCriterion("classify_2 between", value1, value2, "classify2");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyZNotBetween(Integer value1, Integer value2) {
-            addCriterion("classify_z not between", value1, value2, "classifyZ");
+        public Criteria andClassify2NotBetween(Integer value1, Integer value2) {
+            addCriterion("classify_2 not between", value1, value2, "classify2");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyJIsNull() {
-            addCriterion("classify_j is null");
+        public Criteria andClassify3IsNull() {
+            addCriterion("classify_3 is null");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyJIsNotNull() {
-            addCriterion("classify_j is not null");
+        public Criteria andClassify3IsNotNull() {
+            addCriterion("classify_3 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyJEqualTo(Integer value) {
-            addCriterion("classify_j =", value, "classifyJ");
+        public Criteria andClassify3EqualTo(Integer value) {
+            addCriterion("classify_3 =", value, "classify3");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyJNotEqualTo(Integer value) {
-            addCriterion("classify_j <>", value, "classifyJ");
+        public Criteria andClassify3NotEqualTo(Integer value) {
+            addCriterion("classify_3 <>", value, "classify3");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyJGreaterThan(Integer value) {
-            addCriterion("classify_j >", value, "classifyJ");
+        public Criteria andClassify3GreaterThan(Integer value) {
+            addCriterion("classify_3 >", value, "classify3");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyJGreaterThanOrEqualTo(Integer value) {
-            addCriterion("classify_j >=", value, "classifyJ");
+        public Criteria andClassify3GreaterThanOrEqualTo(Integer value) {
+            addCriterion("classify_3 >=", value, "classify3");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyJLessThan(Integer value) {
-            addCriterion("classify_j <", value, "classifyJ");
+        public Criteria andClassify3LessThan(Integer value) {
+            addCriterion("classify_3 <", value, "classify3");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyJLessThanOrEqualTo(Integer value) {
-            addCriterion("classify_j <=", value, "classifyJ");
+        public Criteria andClassify3LessThanOrEqualTo(Integer value) {
+            addCriterion("classify_3 <=", value, "classify3");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyJIn(List<Integer> values) {
-            addCriterion("classify_j in", values, "classifyJ");
+        public Criteria andClassify3In(List<Integer> values) {
+            addCriterion("classify_3 in", values, "classify3");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyJNotIn(List<Integer> values) {
-            addCriterion("classify_j not in", values, "classifyJ");
+        public Criteria andClassify3NotIn(List<Integer> values) {
+            addCriterion("classify_3 not in", values, "classify3");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyJBetween(Integer value1, Integer value2) {
-            addCriterion("classify_j between", value1, value2, "classifyJ");
+        public Criteria andClassify3Between(Integer value1, Integer value2) {
+            addCriterion("classify_3 between", value1, value2, "classify3");
             return (Criteria) this;
         }
 
-        public Criteria andClassifyJNotBetween(Integer value1, Integer value2) {
-            addCriterion("classify_j not between", value1, value2, "classifyJ");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyDyIsNull() {
-            addCriterion("classify_dy is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyDyIsNotNull() {
-            addCriterion("classify_dy is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyDyEqualTo(Integer value) {
-            addCriterion("classify_dy =", value, "classifyDy");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyDyNotEqualTo(Integer value) {
-            addCriterion("classify_dy <>", value, "classifyDy");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyDyGreaterThan(Integer value) {
-            addCriterion("classify_dy >", value, "classifyDy");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyDyGreaterThanOrEqualTo(Integer value) {
-            addCriterion("classify_dy >=", value, "classifyDy");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyDyLessThan(Integer value) {
-            addCriterion("classify_dy <", value, "classifyDy");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyDyLessThanOrEqualTo(Integer value) {
-            addCriterion("classify_dy <=", value, "classifyDy");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyDyIn(List<Integer> values) {
-            addCriterion("classify_dy in", values, "classifyDy");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyDyNotIn(List<Integer> values) {
-            addCriterion("classify_dy not in", values, "classifyDy");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyDyBetween(Integer value1, Integer value2) {
-            addCriterion("classify_dy between", value1, value2, "classifyDy");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyDyNotBetween(Integer value1, Integer value2) {
-            addCriterion("classify_dy not between", value1, value2, "classifyDy");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyQIsNull() {
-            addCriterion("classify_q is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyQIsNotNull() {
-            addCriterion("classify_q is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyQEqualTo(Integer value) {
-            addCriterion("classify_q =", value, "classifyQ");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyQNotEqualTo(Integer value) {
-            addCriterion("classify_q <>", value, "classifyQ");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyQGreaterThan(Integer value) {
-            addCriterion("classify_q >", value, "classifyQ");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyQGreaterThanOrEqualTo(Integer value) {
-            addCriterion("classify_q >=", value, "classifyQ");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyQLessThan(Integer value) {
-            addCriterion("classify_q <", value, "classifyQ");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyQLessThanOrEqualTo(Integer value) {
-            addCriterion("classify_q <=", value, "classifyQ");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyQIn(List<Integer> values) {
-            addCriterion("classify_q in", values, "classifyQ");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyQNotIn(List<Integer> values) {
-            addCriterion("classify_q not in", values, "classifyQ");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyQBetween(Integer value1, Integer value2) {
-            addCriterion("classify_q between", value1, value2, "classifyQ");
-            return (Criteria) this;
-        }
-
-        public Criteria andClassifyQNotBetween(Integer value1, Integer value2) {
-            addCriterion("classify_q not between", value1, value2, "classifyQ");
+        public Criteria andClassify3NotBetween(Integer value1, Integer value2) {
+            addCriterion("classify_3 not between", value1, value2, "classify3");
             return (Criteria) this;
         }
 

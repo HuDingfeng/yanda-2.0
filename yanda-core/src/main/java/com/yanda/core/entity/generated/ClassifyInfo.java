@@ -17,7 +17,12 @@ public class ClassifyInfo implements Serializable {
     private String classifyDesc;
 
     /**
-     * 分类类型 1-视频分类 2-年级分类 3-章分类 4-节分类 5-单元分类 6-期中期末
+     * 10-视频分类   
+20-考题分类  
+21-专题练习章  211-专题练习节   
+22-知识巩固章  221-知识巩固节
+23-历年真题  
+24-仿真练习
      */
     @Column(name = "classify_type")
     private Integer classifyType;
@@ -98,18 +103,38 @@ public class ClassifyInfo implements Serializable {
     }
 
     /**
-     * 获取分类类型 1-视频分类 2-年级分类 3-章分类 4-节分类 5-单元分类 6-期中期末
+     * 获取10-视频分类   
+20-考题分类  
+21-专题练习章  211-专题练习节   
+22-知识巩固章  221-知识巩固节
+23-历年真题  
+24-仿真练习
      *
-     * @return classify_type - 分类类型 1-视频分类 2-年级分类 3-章分类 4-节分类 5-单元分类 6-期中期末
+     * @return classify_type - 10-视频分类   
+20-考题分类  
+21-专题练习章  211-专题练习节   
+22-知识巩固章  221-知识巩固节
+23-历年真题  
+24-仿真练习
      */
     public Integer getClassifyType() {
         return classifyType;
     }
 
     /**
-     * 设置分类类型 1-视频分类 2-年级分类 3-章分类 4-节分类 5-单元分类 6-期中期末
+     * 设置10-视频分类   
+20-考题分类  
+21-专题练习章  211-专题练习节   
+22-知识巩固章  221-知识巩固节
+23-历年真题  
+24-仿真练习
      *
-     * @param classifyType 分类类型 1-视频分类 2-年级分类 3-章分类 4-节分类 5-单元分类 6-期中期末
+     * @param classifyType 10-视频分类   
+20-考题分类  
+21-专题练习章  211-专题练习节   
+22-知识巩固章  221-知识巩固节
+23-历年真题  
+24-仿真练习
      */
     public void setClassifyType(Integer classifyType) {
         this.classifyType = classifyType;

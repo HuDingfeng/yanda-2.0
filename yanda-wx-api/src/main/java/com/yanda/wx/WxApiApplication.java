@@ -13,6 +13,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class WxApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WxApiApplication.class, args);
+		SpringApplication.run(WxApiApplication.class, args);  
 	}
 }

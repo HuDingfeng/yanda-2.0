@@ -22,11 +22,9 @@
     <result column="vip_type" jdbcType="INTEGER" property="vipType" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="classify_nj" jdbcType="INTEGER" property="classifyNj" />
-    <result column="classify_z" jdbcType="INTEGER" property="classifyZ" />
-    <result column="classify_j" jdbcType="INTEGER" property="classifyJ" />
-    <result column="classify_dy" jdbcType="INTEGER" property="classifyDy" />
-    <result column="classify_q" jdbcType="INTEGER" property="classifyQ" />
+    <result column="classify_1" jdbcType="INTEGER" property="classify1" />
+    <result column="classify_2" jdbcType="INTEGER" property="classify2" />
+    <result column="classify_3" jdbcType="INTEGER" property="classify3" />
     <result column="classify_id" jdbcType="VARCHAR" property="classifyId" />
     <result column="classify_name" jdbcType="VARCHAR" property="classifyName" />
   </resultMap>
@@ -52,11 +50,9 @@
       <arg column="vip_type" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-      <arg column="classify_nj" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="classify_z" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="classify_j" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="classify_dy" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="classify_q" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="classify_1" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="classify_2" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="classify_3" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="classify_id" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="classify_name" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
@@ -131,8 +127,8 @@
     -->
     question_id, question_name, question_content, question_type, answer, answer_num, 
     answer_A, answer_B, answer_C, answer_D, module, img_appendix_id, mv_appendix_id, 
-    episode_id, vip_type, create_time, update_time, classify_nj, classify_z, classify_j, 
-    classify_dy, classify_q, classify_id, classify_name
+    episode_id, vip_type, create_time, update_time, classify_1, classify_2, classify_3, 
+    classify_id, classify_name
   </sql>
   <select id="selectByExample" parameterType="com.yanda.core.entity.generated.QuestionInfoExample" resultMap="BaseResultMap">
     <!--
@@ -245,20 +241,14 @@
       <if test="record.updateTime != null">
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.classifyNj != null">
-        classify_nj = #{record.classifyNj,jdbcType=INTEGER},
+      <if test="record.classify1 != null">
+        classify_1 = #{record.classify1,jdbcType=INTEGER},
       </if>
-      <if test="record.classifyZ != null">
-        classify_z = #{record.classifyZ,jdbcType=INTEGER},
+      <if test="record.classify2 != null">
+        classify_2 = #{record.classify2,jdbcType=INTEGER},
       </if>
-      <if test="record.classifyJ != null">
-        classify_j = #{record.classifyJ,jdbcType=INTEGER},
-      </if>
-      <if test="record.classifyDy != null">
-        classify_dy = #{record.classifyDy,jdbcType=INTEGER},
-      </if>
-      <if test="record.classifyQ != null">
-        classify_q = #{record.classifyQ,jdbcType=INTEGER},
+      <if test="record.classify3 != null">
+        classify_3 = #{record.classify3,jdbcType=INTEGER},
       </if>
       <if test="record.classifyId != null">
         classify_id = #{record.classifyId,jdbcType=VARCHAR},
@@ -293,11 +283,9 @@
       vip_type = #{record.vipType,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      classify_nj = #{record.classifyNj,jdbcType=INTEGER},
-      classify_z = #{record.classifyZ,jdbcType=INTEGER},
-      classify_j = #{record.classifyJ,jdbcType=INTEGER},
-      classify_dy = #{record.classifyDy,jdbcType=INTEGER},
-      classify_q = #{record.classifyQ,jdbcType=INTEGER},
+      classify_1 = #{record.classify1,jdbcType=INTEGER},
+      classify_2 = #{record.classify2,jdbcType=INTEGER},
+      classify_3 = #{record.classify3,jdbcType=INTEGER},
       classify_id = #{record.classifyId,jdbcType=VARCHAR},
       classify_name = #{record.classifyName,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -322,18 +310,17 @@
     insert into t_question_info
     (question_id, question_name, question_content, question_type, answer, answer_num, 
       answer_A, answer_B, answer_C, answer_D, module, img_appendix_id, mv_appendix_id, 
-      episode_id, vip_type, create_time, update_time, classify_nj, classify_z, classify_j, 
-      classify_dy, classify_q, classify_id, classify_name)
+      episode_id, vip_type, create_time, update_time, classify_1, classify_2, classify_3, 
+      classify_id, classify_name)
     values
     (#{questionId,jdbcType=BIGINT}, #{questionName,jdbcType=VARCHAR}, #{questionContent,jdbcType=VARCHAR}, 
       #{questionType,jdbcType=INTEGER}, #{answer,jdbcType=VARCHAR}, #{answerNum,jdbcType=INTEGER}, 
       #{answerA,jdbcType=VARCHAR}, #{answerB,jdbcType=VARCHAR}, #{answerC,jdbcType=VARCHAR}, 
       #{answerD,jdbcType=VARCHAR}, #{module,jdbcType=INTEGER}, #{imgAppendixId,jdbcType=BIGINT}, 
       #{mvAppendixId,jdbcType=BIGINT}, #{episodeId,jdbcType=BIGINT}, #{vipType,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{classifyNj,jdbcType=INTEGER}, 
-      #{classifyZ,jdbcType=INTEGER}, #{classifyJ,jdbcType=INTEGER}, #{classifyDy,jdbcType=INTEGER}, 
-      #{classifyQ,jdbcType=INTEGER}, #{classifyId,jdbcType=VARCHAR}, #{classifyName,jdbcType=VARCHAR}
-      )
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{classify1,jdbcType=INTEGER}, 
+      #{classify2,jdbcType=INTEGER}, #{classify3,jdbcType=INTEGER}, #{classifyId,jdbcType=VARCHAR}, 
+      #{classifyName,jdbcType=VARCHAR})
     on duplicate key update 
     question_id = #{questionId,jdbcType=BIGINT}, 
     question_name = #{questionName,jdbcType=VARCHAR}, 
@@ -352,11 +339,9 @@
     vip_type = #{vipType,jdbcType=INTEGER}, 
     create_time = #{createTime,jdbcType=TIMESTAMP}, 
     update_time = #{updateTime,jdbcType=TIMESTAMP}, 
-    classify_nj = #{classifyNj,jdbcType=INTEGER}, 
-    classify_z = #{classifyZ,jdbcType=INTEGER}, 
-    classify_j = #{classifyJ,jdbcType=INTEGER}, 
-    classify_dy = #{classifyDy,jdbcType=INTEGER}, 
-    classify_q = #{classifyQ,jdbcType=INTEGER}, 
+    classify_1 = #{classify1,jdbcType=INTEGER}, 
+    classify_2 = #{classify2,jdbcType=INTEGER}, 
+    classify_3 = #{classify3,jdbcType=INTEGER}, 
     classify_id = #{classifyId,jdbcType=VARCHAR}, 
     classify_name = #{classifyName,jdbcType=VARCHAR}
   </insert>
@@ -417,20 +402,14 @@
       <if test="updateTime != null">
         update_time,
       </if>
-      <if test="classifyNj != null">
-        classify_nj,
+      <if test="classify1 != null">
+        classify_1,
       </if>
-      <if test="classifyZ != null">
-        classify_z,
+      <if test="classify2 != null">
+        classify_2,
       </if>
-      <if test="classifyJ != null">
-        classify_j,
-      </if>
-      <if test="classifyDy != null">
-        classify_dy,
-      </if>
-      <if test="classifyQ != null">
-        classify_q,
+      <if test="classify3 != null">
+        classify_3,
       </if>
       <if test="classifyId != null">
         classify_id,
@@ -492,20 +471,14 @@
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="classifyNj != null">
-        #{classifyNj,jdbcType=INTEGER},
+      <if test="classify1 != null">
+        #{classify1,jdbcType=INTEGER},
       </if>
-      <if test="classifyZ != null">
-        #{classifyZ,jdbcType=INTEGER},
+      <if test="classify2 != null">
+        #{classify2,jdbcType=INTEGER},
       </if>
-      <if test="classifyJ != null">
-        #{classifyJ,jdbcType=INTEGER},
-      </if>
-      <if test="classifyDy != null">
-        #{classifyDy,jdbcType=INTEGER},
-      </if>
-      <if test="classifyQ != null">
-        #{classifyQ,jdbcType=INTEGER},
+      <if test="classify3 != null">
+        #{classify3,jdbcType=INTEGER},
       </if>
       <if test="classifyId != null">
         #{classifyId,jdbcType=VARCHAR},
@@ -567,20 +540,14 @@
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="classifyNj != null">
-        classify_nj = #{classifyNj,jdbcType=INTEGER},
+      <if test="classify1 != null">
+        classify_1 = #{classify1,jdbcType=INTEGER},
       </if>
-      <if test="classifyZ != null">
-        classify_z = #{classifyZ,jdbcType=INTEGER},
+      <if test="classify2 != null">
+        classify_2 = #{classify2,jdbcType=INTEGER},
       </if>
-      <if test="classifyJ != null">
-        classify_j = #{classifyJ,jdbcType=INTEGER},
-      </if>
-      <if test="classifyDy != null">
-        classify_dy = #{classifyDy,jdbcType=INTEGER},
-      </if>
-      <if test="classifyQ != null">
-        classify_q = #{classifyQ,jdbcType=INTEGER},
+      <if test="classify3 != null">
+        classify_3 = #{classify3,jdbcType=INTEGER},
       </if>
       <if test="classifyId != null">
         classify_id = #{classifyId,jdbcType=VARCHAR},

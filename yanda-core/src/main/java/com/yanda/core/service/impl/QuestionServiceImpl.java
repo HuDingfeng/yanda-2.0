@@ -1,5 +1,8 @@
 package com.yanda.core.service.impl;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,10 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.yanda.core.entity.PageResult;
+import com.yanda.core.entity.QuTypeEnum;
 import com.yanda.core.entity.generated.AttachmentInfo;
 import com.yanda.core.entity.generated.QuestionInfo;
 import com.yanda.core.entity.generated.QuestionInfoExample;
 import com.yanda.core.exception.DOPException;
+import com.yanda.core.mapper.CustomMapper;
 import com.yanda.core.mapper.generated.QuestionInfoMapper;
 import com.yanda.core.service.AttachmentService;
 import com.yanda.core.service.QuestionService;
@@ -20,6 +25,8 @@ public class QuestionServiceImpl extends BaseServiceImpl<QuestionInfoMapper, Que
 	
 	@Autowired
 	private AttachmentService attachmentService;
+	@Autowired
+	private CustomMapper customMapper;
 	
 	@Override
 	public PageResult<QuestionInfo> getList(int pageNum, int pageSize, String searchVal) {
@@ -78,4 +85,32 @@ public class QuestionServiceImpl extends BaseServiceImpl<QuestionInfoMapper, Que
 		return super.update(t);
 	}
 
+	@Override
+	public List<QuestionInfo> list(Integer id, Integer module) {
+		QuestionInfoExample example = new QuestionInfoExample();
+		return excuteSelect(example, id, module);
+	}
+	
+	private List<QuestionInfo> excuteSelect(QuestionInfoExample example, Integer id, Integer module) {
+		if (module.intValue() == QuTypeEnum.ZTLX.value || module.intValue() == QuTypeEnum.ZSGG.value) {
+			example.createCriteria().andClassify3EqualTo(id);
+			List<QuestionInfo> qInfos = mapper.selectByExample(example);
+			Collections.shuffle(qInfos);
+			// 章节练习或专业知识练习纸只获取十条题目
+			//customMapper.findRandQuestions(id);
+			return qInfos;
+		} else if (module.intValue() == QuTypeEnum.LNZT.value || module.intValue() == QuTypeEnum.FZLX.value) {
+			example.createCriteria().andClassify2EqualTo(id);
+		}
+		return mapper.selectByExample(example);
+		
+	}
+
+	@Override
+	public Integer getTotal(Integer id, Integer module) {
+		QuestionInfoExample example = new QuestionInfoExample();
+		example.createCriteria().andClassify3EqualTo(id);
+		return this.mapper.selectCountByExample(example);
+	}
+	
 }

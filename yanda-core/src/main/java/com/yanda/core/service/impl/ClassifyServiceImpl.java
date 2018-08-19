@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.yanda.core.entity.ClsTypeEnum;
 import com.yanda.core.entity.PageResult;
 import com.yanda.core.entity.WebClassifyInfo;
 import com.yanda.core.entity.generated.ClassifyInfo;
@@ -65,7 +66,7 @@ public class ClassifyServiceImpl extends BaseServiceImpl<ClassifyInfoMapper, Cla
 			throw new DOPException("请先删除子分类");
 		ClassifyInfo classifyInfo = this.mapper.selectByPrimaryKeySelective(id, ClassifyInfo.Col.classifyType);
 		
-		if (classifyInfo.getClassifyType().intValue() == 1) {
+		if (classifyInfo.getClassifyType().intValue() == ClsTypeEnum.MOVIE.value) {
 			MovieInfoExample example1 = new MovieInfoExample();
 			example1.createCriteria().andClassifyIdEqualTo(id);
 			int count = movieInfoMapper.selectCountByExample(example1);
@@ -76,11 +77,12 @@ public class ClassifyServiceImpl extends BaseServiceImpl<ClassifyInfoMapper, Cla
 		
 		return super.deleteById(id);
 	}
-
+	
+	@Cacheable(value = "classifyList")
 	@Override
 	public List<WebClassifyInfo> findTreeByType(Integer type) {
 		// 先查询年级分类
-		List<WebClassifyInfo> njWebClsList = findListByType(2);
+		List<WebClassifyInfo> njWebClsList = findListByType(ClsTypeEnum.KAOTI.value);
 		// 查询年级分类下对应的题目分类
 		for (WebClassifyInfo webCls : njWebClsList) {
 			ClassifyInfoExample example = new ClassifyInfoExample();
@@ -88,16 +90,8 @@ public class ClassifyServiceImpl extends BaseServiceImpl<ClassifyInfoMapper, Cla
 			List<ClassifyInfo> clsList = this.mapper.selectByExampleSelective(example, ClassifyInfo.Col.classifyId, ClassifyInfo.Col.classifyName);	
 			List<WebClassifyInfo> webClsList = classifyInfoListConvert(clsList);
 			webCls.setClassify(webClsList);
-			// 章分类需要继续查询节分类
-			if (type.intValue() == 3) {
-				for (WebClassifyInfo web : webClsList) {
-					example.clear();
-					example.createCriteria().andParentIdEqualTo(web.getId());
-					List<ClassifyInfo> jieClsList = this.mapper.selectByExampleSelective(example, ClassifyInfo.Col.classifyId, ClassifyInfo.Col.classifyName);	
-					List<WebClassifyInfo> jieWebClsList = classifyInfoListConvert(jieClsList);
-					web.setClassify(jieWebClsList);
-				}
-			}
+			
+			setChildClsByType(webClsList, type);
 		}
 		return njWebClsList;
 	}
@@ -118,22 +112,58 @@ public class ClassifyServiceImpl extends BaseServiceImpl<ClassifyInfoMapper, Cla
 		}
 		return webClsInfos;
 	}
-
+	
+	@Cacheable(value = "classifyList")
 	@Override
 	public List<WebClassifyInfo> findListByType(Integer type) {
 		ClassifyInfoExample example = new ClassifyInfoExample();
 		example.createCriteria().andClassifyTypeEqualTo(type).andParentIdEqualTo(0);
+		example.setOrderByClause("classify_order asc");
 		List<ClassifyInfo> clsList = this.mapper.selectByExampleSelective(example, ClassifyInfo.Col.classifyId, ClassifyInfo.Col.classifyName, ClassifyInfo.Col.iconUrl);
 		return classifyInfoListConvert(clsList);
 	}
-
+	
+	@Cacheable(value = "classifyList")
 	@Override
 	public List<WebClassifyInfo> findChildListByParentId(Integer parentId) {
 		ClassifyInfoExample example = new ClassifyInfoExample();
 		example.createCriteria().andParentIdEqualTo(parentId);
+		example.setOrderByClause("classify_order asc");
 		List<ClassifyInfo> clsList = this.mapper.selectByExampleSelective(example, ClassifyInfo.Col.classifyId, ClassifyInfo.Col.classifyName, ClassifyInfo.Col.iconUrl);
 		return classifyInfoListConvert(clsList);
 	}
 	
+	@Cacheable(value = "classifyList")
+	@Override
+	public List<WebClassifyInfo> getTreeByParentId(Integer parentId, Integer type) {
+		ClassifyInfoExample example = new ClassifyInfoExample();
+		example.createCriteria().andParentIdEqualTo(parentId).andClassifyTypeEqualTo(type);
+		example.setOrderByClause("classify_order asc");
+		List<ClassifyInfo> clsList = this.mapper.selectByExampleSelective(example, ClassifyInfo.Col.classifyId, ClassifyInfo.Col.classifyName, ClassifyInfo.Col.iconUrl);
+		List<WebClassifyInfo> webClsList = classifyInfoListConvert(clsList);
+		
+		setChildClsByType(webClsList, type);
+
+		return webClsList;
+	}
 	
+	/**
+	 * 若分类为章分类，遍历每个父分类并设置子分类
+	 * @param parentClsList
+	 * @param type
+	 */
+	private void setChildClsByType(List<WebClassifyInfo> parentClsList, Integer type) {
+		ClassifyInfoExample example = new ClassifyInfoExample();
+		// 查询章分类下对应的节分类
+		if (type.intValue() == ClsTypeEnum.ZTLXZ.value || type.intValue() == ClsTypeEnum.ZSGGZ.value) {
+			for (WebClassifyInfo web : parentClsList) {
+				example.clear();
+				example.createCriteria().andParentIdEqualTo(web.getId());
+				example.setOrderByClause("classify_order asc");
+				List<ClassifyInfo> jieClsList = this.mapper.selectByExampleSelective(example, ClassifyInfo.Col.classifyId, ClassifyInfo.Col.classifyName);	
+				List<WebClassifyInfo> jieWebClsList = classifyInfoListConvert(jieClsList);
+				web.setClassify(jieWebClsList);
+			}
+		}
+	}
 }

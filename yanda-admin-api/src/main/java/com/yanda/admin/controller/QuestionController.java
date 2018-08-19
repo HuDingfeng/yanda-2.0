@@ -1,5 +1,6 @@
 package com.yanda.admin.controller;
 
+import java.lang.reflect.Field;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,9 +47,14 @@ public class QuestionController extends BaseController {
 	 * @param qInfo
 	 * @return
 	 * @throws DOPException
+	 * @throws ClassNotFoundException 
+	 * @throws SecurityException 
+	 * @throws NoSuchFieldException 
+	 * @throws IllegalAccessException 
+	 * @throws IllegalArgumentException 
 	 */
 	@PostMapping("/add")
-	public JsonResult add(HttpServletRequest request, @RequestBody QuestionInfo qInfo) throws DOPException {
+	public JsonResult add(HttpServletRequest request, @RequestBody QuestionInfo qInfo) throws DOPException, ClassNotFoundException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		AttachmentInfo imgAttach = handleImgAttach(request);
 		AttachmentInfo videoAttach = handleVideoAttach(request);
 		if (videoAttach != null) {
@@ -63,16 +69,15 @@ public class QuestionController extends BaseController {
 		qInfo.setUpdateTime(now);
 		
 		String classifyIdStr = qInfo.getClassifyId();
-		int module = qInfo.getModule();
 		int[] classifyIdArr = StringUtil.stringToInts(classifyIdStr, "/");
-		qInfo.setClassifyNj(classifyIdArr[0]);
-		if (module == 1) {
-			qInfo.setClassifyZ(classifyIdArr[1]);
-			qInfo.setClassifyJ(classifyIdArr[2]);
-		} else if (module == 2) {
-			qInfo.setClassifyDy(classifyIdArr[1]);
-		} else if (module == 3) {
-			qInfo.setClassifyQ(classifyIdArr[1]);
+		
+		Class<?> clazz = qInfo.getClass();
+		
+		for (int i = 1; i <= classifyIdArr.length; i++) {
+			String fileName = "classify" + i;
+			Field field = clazz.getDeclaredField(fileName);
+			field.setAccessible(true);
+	        field.set(qInfo, classifyIdArr[i-1]);
 		}
 		
 		questionService.save(qInfo, imgAttach, videoAttach);

@@ -29,9 +29,9 @@ import com.yanda.core.util.StringUtil;
 @Aspect
 @Configuration
 public class TokenValidAop {
-	
+
 	private static Logger LOG = Logger.getLogger(TokenValidAop.class);
-	
+
 	@Resource
 	private RedisTemplate<String, Object> redisTemplate;
 
@@ -54,35 +54,36 @@ public class TokenValidAop {
 
 		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		HttpServletRequest request = attributes.getRequest();
+
 		String terminal = request.getHeader("terminal");
 		String token = request.getHeader("token");
+
 		if (StringUtil.isNotEmpty(terminal) && terminal.equals("wechat")) {
 			if (StringUtil.isEmpty(token))
-				return new JsonResult(401, "请先登录"); 
+				return new JsonResult(401, "请先登录");
 			String userName = "";
 			try {
 				String decryToken = DesEncryptUtil.decrypt(token, Const.KEY_DATA);
 				userName = decryToken.split("&")[1];
 			} catch (Exception e) {
 				LOG.error("token值非法", e);
-				return new JsonResult(401, "登录凭证非法,请重新登录"); 
+				return new JsonResult(401, "登录凭证非法,请重新登录");
 			}
-			
-			
+
 			Object userToken = redisTemplate.opsForHash().get(Const.TOKEN_KEY_PRE, userName);
 			if (null == userToken || !userToken.toString().equals(token)) {
-				return new JsonResult(401, "登录状态已失效,请重新登录"); 
+				return new JsonResult(401, "登录状态已失效,请重新登录");
 			}
 			// 重新刷新token有效期
 			redisTemplate.opsForHash().put(Const.TOKEN_KEY_PRE, userName, token);
 			redisTemplate.expire(Const.TOKEN_KEY_PRE + userName, Const.TOKEN_EXPIRE, TimeUnit.DAYS);
-			
+
 		}
 		try {
 			return point.proceed();
 		} catch (Throwable e) {
 			LOG.error("校验token异常:", e);
-			return new JsonResult(500, "内部错误"); 
+			return new JsonResult(500, "内部错误");
 		}
 	}
 }

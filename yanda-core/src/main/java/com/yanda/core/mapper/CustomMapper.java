@@ -6,14 +6,15 @@ import org.apache.ibatis.annotations.Param;
 
 import com.yanda.core.entity.ClassifyDetailInfo;
 import com.yanda.core.entity.generated.MovieInfo;
+import com.yanda.core.entity.generated.QuestionInfo;
 
 /**
  * 视频分类相关接口mapper
- * MovieClassifyMapper.java
+ * CustomMapper.java
  * @author chenli
  * @time 2018年3月7日 下午11:30:26
  */
-public interface MovieClassifyMapper {
+public interface CustomMapper {
 	/**
 	 * 通过分类id获取视频列表
 	 * @param classifyId 分类id
@@ -34,5 +35,10 @@ public interface MovieClassifyMapper {
 	 */
 	ClassifyDetailInfo findClassifyInfo(@Param("classifyId")int classifyId);
 	
-	
+	/**
+	 * 根据章节的分类ID获取随机的十条题目
+	 * @param classifyId
+	 * @return
+	 */
+	List<QuestionInfo> findRandQuestions(@Param("classifyId")int classifyId);
 }

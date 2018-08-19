@@ -14,7 +14,6 @@ import com.yanda.core.entity.EpisodeDetailInfo;
 import com.yanda.core.entity.generated.EpisodeInfo;
 import com.yanda.core.exception.DOPException;
 import com.yanda.core.service.EpisodeService;
-import com.yanda.core.service.MovieService;
 import com.yanda.core.web.BaseController;
 
 /**
@@ -26,11 +25,6 @@ import com.yanda.core.web.BaseController;
 @RestController
 @RequestMapping(value = "/episode")
 public class EpisodeController extends BaseController {
-	/**
-	 * 视频服务类
-	 */
-	@Autowired
-	private MovieService movieService;
 	/**
 	 * 视频集服务类
 	 */

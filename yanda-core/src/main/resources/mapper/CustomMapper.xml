@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yanda.core.mapper.MovieClassifyMapper">
+<mapper namespace="com.yanda.core.mapper.CustomMapper">
 
 	<resultMap id="SimpleClassifyMap" type="com.yanda.core.entity.generated.ClassifyInfo">
 		<id column="classify_id" jdbcType="INTEGER" javaType="java.lang.Integer"
@@ -86,6 +86,58 @@
 		<if test="order == null">
 			order by update_time desc;
 		</if>
+	</select>
+	
+	<select id="findRandQuestions" resultMap="com.yanda.core.mapper.generated.QuestionInfoMapper.BasePropertyResultMap">
+		SELECT
+			t1.*
+		FROM
+			t_question_info AS t1
+		JOIN (
+			SELECT
+				ROUND(
+					RAND() * (
+						(
+							SELECT
+								MAX(question_id)
+							FROM
+								t_question_info
+						) - (
+							SELECT
+								MIN(question_id)
+							FROM
+								t_question_info
+						)
+					) + (
+						SELECT
+							MIN(question_id)
+						FROM
+							t_question_info
+					)
+				) AS question_id
+		) AS t2
+		WHERE
+			t1.question_id >= t2.question_id
+		LIMIT 10;
+		<!-- SELECT
+			*
+		FROM
+			t_question_info
+		WHERE
+			question_id >= (
+				SELECT
+					floor(
+						RAND() * (
+							SELECT
+								MAX(question_id)
+							FROM
+								t_question_info
+						)
+					)
+			) and classify_3 = #{ classifyId }
+		ORDER BY
+			question_id
+		LIMIT 10; -->
 	</select>
 
 </mapper>

@@ -28,7 +28,7 @@ import com.yanda.core.entity.generated.MovieInfo.Col;
 import com.yanda.core.entity.generated.MovieInfoExample;
 import com.yanda.core.entity.generated.MovieInfoExample.Criteria;
 import com.yanda.core.exception.DOPException;
-import com.yanda.core.mapper.MovieClassifyMapper;
+import com.yanda.core.mapper.CustomMapper;
 import com.yanda.core.mapper.generated.ClassifyInfoMapper;
 import com.yanda.core.mapper.generated.MovieInfoMapper;
 import com.yanda.core.service.AttachmentService;
@@ -39,7 +39,7 @@ import com.yanda.core.util.StringUtil;
 public class MovieServiceImpl extends BaseServiceImpl<MovieInfoMapper, MovieInfo, Long> implements MovieService {
 	
 	@Autowired
-	private MovieClassifyMapper movieClassifyMapper;
+	private CustomMapper movieClassifyMapper;
 	@Autowired
 	private AttachmentService attachmentService;
 	@Autowired

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.yanda.core.entity.ClsTypeEnum;
 import com.yanda.core.entity.JsonResult;
 import com.yanda.core.entity.PageResult;
 import com.yanda.core.entity.WebClassifyInfo;
@@ -52,12 +53,12 @@ public class ClassifyController extends BaseController {
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public JsonResult list(HttpServletRequest request) {
-		String pageNum = getValue(request, "pageNum", "1");
-		String pageSize = getValue(request, "pageSize", "10");
+		Integer pageNum = getIntValue(request, "pageNum", 1);
+		Integer pageSize = getIntValue(request, "pageSize", 10);
 		String classifyName = getNotEmptyValue(request, "classifyName");
-		String classifyType = getValue(request, "classifyType", "1");
-		PageResult<ClassifyInfo> ClassifyInfos = classifyService.list(Integer.valueOf(pageNum),
-				Integer.valueOf(pageSize), Integer.valueOf(classifyType), classifyName);
+		Integer classifyType = getIntValue(request, "classifyType", ClsTypeEnum.MOVIE.value);
+		PageResult<ClassifyInfo> ClassifyInfos = classifyService.list(pageNum,
+				pageSize, classifyType, classifyName);
 		return result(200, "success", ClassifyInfos);
 	}
 
@@ -70,13 +71,13 @@ public class ClassifyController extends BaseController {
 	 */
 	@RequestMapping(value = "/getClassifyById")
 	public JsonResult getClassifyById(HttpServletRequest request, Integer parentId) {
-		String pageNum = getValue(request, "pageNum", "1");
-		String pageSize = getValue(request, "pageSize", "10");
+		Integer pageNum = getIntValue(request, "pageNum", 1);
+		Integer pageSize = getIntValue(request, "pageSize", 10);
 		String searchVal = getNotEmptyValue(request, "searchVal");
-		String classifyType = getValue(request, "classifyType", "1");
+		Integer classifyType = getIntValue(request, "classifyType", ClsTypeEnum.MOVIE.value);
 		
 		PageResult<ClassifyInfo> ClassifyInfos = classifyService.getClassifyById(Integer.valueOf(pageNum),
-				Integer.valueOf(pageSize), parentId, Integer.valueOf(classifyType), searchVal);
+				Integer.valueOf(pageSize), parentId, classifyType, searchVal);
 		return result(200, "success", ClassifyInfos);
 	}
 

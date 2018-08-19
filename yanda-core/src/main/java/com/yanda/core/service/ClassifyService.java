@@ -47,5 +47,13 @@ public interface ClassifyService extends BaseService<ClassifyInfo, Integer> {
 	 * @return
 	 */
 	List<WebClassifyInfo> findChildListByParentId(Integer parentId);
+	
+	/**
+	 * 根据年级ID和type获取该年级下的章节/单元/期中期末分类
+	 * @param parentId
+	 * @param type
+	 * @return
+	 */
+	List<WebClassifyInfo> getTreeByParentId(Integer parentId, Integer type);
 
 }
